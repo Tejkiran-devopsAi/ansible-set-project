@@ -1,0 +1,6 @@
+- hosts: devops
+  tasks:
+     - name: Install Java
+       yum:
+         name: java-21-amazon-corretto
+         state: present

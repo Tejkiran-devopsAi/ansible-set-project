@@ -1,0 +1,23 @@
+---
+- name: Install Jenkins
+  hosts: devops
+  become: true
+
+  tasks:
+
+    - name: Add Jenkins repository
+      ansible.builtin.get_url:
+        url: https://pkg.jenkins.io/rpm-stable/jenkins.repo
+        dest: /etc/yum.repos.d/jenkins.repo
+        mode: '0644'
+
+    - name: Install Jenkins
+      ansible.builtin.dnf:
+        name: jenkins
+        state: present
+
+    - name: Enable and start Jenkins
+      ansible.builtin.systemd:
+        name: jenkins
+        state: started
+        enabled: true

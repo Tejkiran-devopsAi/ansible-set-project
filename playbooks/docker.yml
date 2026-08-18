@@ -1,0 +1,6 @@
+- hosts: devops
+  tasks:
+     - name: Install Docker
+       yum:
+         name: docker
+         state: present
