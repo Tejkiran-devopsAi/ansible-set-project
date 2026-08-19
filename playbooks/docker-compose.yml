@@ -1,8 +1,12 @@
 - hosts: devops
+  become: yes
+
   tasks:
-   copy:
-    src: "/docker-compose.sh"
-    dist: ""
-    mode: "777"
- - name: execute the script
-   shell: nohup /docker-compose.sh"
+    - name: Copy Docker Compose installation script
+      copy:
+        src: "../docker-compose.sh"
+        dest: "/docker-compose.sh"
+        mode: "0755"
+
+    - name: Execute Docker Compose installation script
+      shell: /docker-compose.sh
