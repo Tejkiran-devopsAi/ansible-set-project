@@ -4,5 +4,5 @@
     src: "/docker-compose.sh"
     dist: ""
     mode: "777"
-- name: execute the script
-  shell: nohup /docker-compose.sh"
+ - name: execute the script
+   shell: nohup /docker-compose.sh"
