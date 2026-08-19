@@ -1,5 +1,14 @@
 - hosts: devops
+  become: true
+
   tasks:
-   - name: install the trivy for the image scan
-     ansible_buildin_url:
-      url: curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.72.0
+
+    - name: Download Trivy install script
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh
+        dest: /tmp/trivy-install.sh
+        mode: '0755'
+
+    - name: Install Trivy
+      ansible.builtin.command:
+        cmd: /tmp/trivy-install.sh -b /usr/local/bin v0.72.0
