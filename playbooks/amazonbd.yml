@@ -1,0 +1,7 @@
+- hosts: devops
+  connection: ssh
+   tasks:
+    - name: Install MariaDB
+      ansible.builtin.dnf:
+        name: mariadb105
+        state: present
