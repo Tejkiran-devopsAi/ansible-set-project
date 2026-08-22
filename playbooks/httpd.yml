@@ -1,9 +1,9 @@
 - hosts: devops
   connection: ssh
   tasks:
-  - name: install httpd
-    yum: name=httpd state=present
-    notify: httpd installed
+   - name: install httpd
+      yum: name=httpd state=present
+     notify: httpd installed
   handlers:
-  - name: httpd installed
-    state: started
+   - name: httpd installed
+     state: started
